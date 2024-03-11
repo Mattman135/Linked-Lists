@@ -11,22 +11,27 @@ class List {
   }
 
   append(value) {
-    let node = this.head
-    while (node) {
-      if (node.next == null) {
-        node.next = value
-        return
+    if (this.head === null) {
+      this.head = value
+    } else {
+      let LastNode = this.head
+      if (LastNode) {
+        while (LastNode.next) {
+          LastNode = LastNode.next
+        }
       }
-      node = node.next
+      let tail = new Node()
+      tail.data = value
+      LastNode.next = tail
+      return LastNode
     }
   }
 }
 
-let node1 = new Node(2)
-let node2 = new Node(5)
-let node3 = new Node(6)
-
+let node1 = new Node(1)
+let node2 = new Node(2)
 node1.next = node2
-node2.next = node3
 let list = new List(node1)
 console.log(list)
+
+list.append(3)
