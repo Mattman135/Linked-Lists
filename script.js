@@ -26,12 +26,39 @@ class List {
       return LastNode
     }
   }
+
+  head() {
+    return this.head
+  }
+
+  tail() {
+    let node = this.head
+    if (node) {
+      while (node.next) {
+        node = node.next
+      }
+    }
+    return node
+  }
+
+  size() {
+    let node = this.head
+    let count = 0
+    while (node.next) {
+      count++
+      node = node.next
+    }
+    return count + 1
+  }
+
+  // prepend, at(index), pop, contains(value), find(value), toString
 }
 
 let node1 = new Node(1)
 let node2 = new Node(2)
 node1.next = node2
-let list = new List(node1)
-console.log(list)
-
+const list = new List(node1)
 list.append(3)
+list.append(4)
+console.log(list)
+console.log(list.size())
