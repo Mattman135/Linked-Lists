@@ -51,6 +51,25 @@ class List {
     return count + 1
   }
 
+  prepend(value) {
+    let node = new Node(value)
+    if (this.head) {
+      node.next = this.head
+    }
+    this.head = node
+  }
+
+  at(index) {
+    let s = list.size()
+    if (index < 0 || index > s) return "Index out of range"
+
+    let currentNode = this.head
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next
+    }
+    return currentNode.data
+  }
+
   // prepend, at(index), pop, contains(value), find(value), toString
 }
 
@@ -59,6 +78,8 @@ let node2 = new Node(2)
 node1.next = node2
 const list = new List(node1)
 list.append(3)
-list.append(4)
+list.append(6)
+list.prepend(10)
 console.log(list)
 console.log(list.size())
+console.log(list.at(4))
