@@ -70,7 +70,53 @@ class List {
     return currentNode.data
   }
 
-  // prepend, at(index), pop, contains(value), find(value), toString
+  pop() {
+    let node = this.head
+    if (node) {
+      while (node.next) {
+        node = node.next
+        if (!node.next.next) {
+          node.next = null
+          return
+        }
+      }
+    }
+  }
+
+  contains(value) {
+    let node = this.head
+    if (node.data === value) return true
+    while (node.next) {
+      node = node.next
+      if (node.data === value) return true
+    }
+    return false
+  }
+
+  find(value) {
+    let index = 0
+    let node = this.head
+    if (node.data === value) return index
+    while (node.next) {
+      node = node.next
+      index++
+      if (node.data === value) return index
+    }
+    return null
+  }
+
+  toString() {
+    let node = this.head
+    let string = `(${node.data}) -> `
+    while (node.next) {
+      node = node.next
+      string += `(${node.data}) -> `
+    }
+    string += "null"
+    console.log(string)
+  }
+
+  // toString
 }
 
 let node1 = new Node(1)
@@ -80,6 +126,3 @@ const list = new List(node1)
 list.append(3)
 list.append(6)
 list.prepend(10)
-console.log(list)
-console.log(list.size())
-console.log(list.at(4))
