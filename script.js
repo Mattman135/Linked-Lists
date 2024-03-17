@@ -116,7 +116,31 @@ class List {
     console.log(string)
   }
 
-  // toString
+  insertAt(value, index) {
+    let s = list.size()
+    if (index < 0 || index > s) return console.log("Index out of bounds")
+    if (index === 0) {
+      list.prepend(value)
+      return console.log(list.toString())
+    }
+    if (index === s) {
+      list.append(value)
+      return console.log(list.toString())
+    }
+
+    let node = this.head
+    let count = 0
+    while (node.next) {
+      node = node.next
+      count++
+      if (count === index) {
+        let newNode = new Node(value)
+        newNode.next = node.next
+        node.next = newNode
+        return console.log(list.toString())
+      }
+    }
+  }
 }
 
 let node1 = new Node(1)
