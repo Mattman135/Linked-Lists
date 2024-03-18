@@ -113,7 +113,7 @@ class List {
       string += `(${node.data}) -> `
     }
     string += "null"
-    console.log(string)
+    return console.log(string)
   }
 
   insertAt(value, index) {
@@ -140,6 +140,24 @@ class List {
         return console.log(list.toString())
       }
     }
+  }
+
+  removeAt(index) {
+    let count = 0
+    if (count === index) {
+      this.head = this.head.next
+      return console.log(list.toString())
+    }
+
+    let node = this.head
+    while (node.next) {
+      count++
+      if (count === index) {
+        node.next = node.next.next
+      }
+      node = node.next
+    }
+    return console.log(list.toString())
   }
 }
 
